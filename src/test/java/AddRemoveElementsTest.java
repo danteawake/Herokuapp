@@ -25,7 +25,7 @@ public class AddRemoveElementsTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--incognito");
-        options.addArguments("--disable-nitifications");
+        options.addArguments("--disable-notifications");
 
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://the-internet.herokuapp.com/");

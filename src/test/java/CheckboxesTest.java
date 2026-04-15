@@ -24,7 +24,7 @@ public class CheckboxesTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--incognito");
-        options.addArguments("--disable-nitifications");
+        options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
 
         WebDriver driver = new ChromeDriver(options);
