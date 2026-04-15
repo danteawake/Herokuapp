@@ -28,7 +28,6 @@ public class InputsTest {
         options.addArguments("--start-maximized");
         options.addArguments("--incognito");
         options.addArguments("--disable-notifications");
-        options.addArguments("--start-maximized");
 
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://the-internet.herokuapp.com/");
