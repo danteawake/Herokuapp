@@ -20,7 +20,7 @@ public class DropdownTest {
     private final By dropdownXpath = By.xpath("//select[@id='dropdown']");
 
     @Test
-    public void checkboxes() {
+    public void checkDropdown() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--incognito");

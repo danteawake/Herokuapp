@@ -20,7 +20,7 @@ public class CheckboxesTest {
     private final By checkbox = By.cssSelector("[type=checkbox]");
 
     @Test
-    public void checkboxes() {
+    public void checkCheckboxes() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--incognito");

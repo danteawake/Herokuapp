@@ -23,7 +23,7 @@ public class InputsTest {
     private String specialChars = "!@#$%^&*()_+-=[]{}|;':\",./<>?`~";
 
     @Test
-    public void checkboxes() {
+    public void checkInputs() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--incognito");
