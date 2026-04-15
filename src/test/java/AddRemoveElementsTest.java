@@ -26,7 +26,6 @@ public class AddRemoveElementsTest {
         options.addArguments("--start-maximized");
         options.addArguments("--incognito");
         options.addArguments("--disable-nitifications");
-        options.addArguments("--start-maximized");
 
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://the-internet.herokuapp.com/");
@@ -39,7 +38,7 @@ public class AddRemoveElementsTest {
         int size1 = driver.findElements(deleteButtonLocator).size();
         Assert.assertEquals(size1, 2);
 
-        driver.findElement(deleteButtonLocator).click();
+        driver.findElements(deleteButtonLocator).get(1).click();
 
         int size2 = driver.findElements(deleteButtonLocator).size();
         Assert.assertEquals(size2, 1);
