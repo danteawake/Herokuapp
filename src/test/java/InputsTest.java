@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
@@ -32,6 +33,7 @@ public class InputsTest {
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://the-internet.herokuapp.com/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        SoftAssert softAssert = new SoftAssert();
 
         driver.findElement(inputsPage).click();
         WebElement input = driver.findElement(inputField);
@@ -39,7 +41,7 @@ public class InputsTest {
         input.sendKeys(Keys.ARROW_UP);
         input.sendKeys(Keys.ARROW_UP);
         input.sendKeys(Keys.ARROW_UP);
-        Assert.assertEquals(input.getAttribute("value"), "3");
+        softAssert.assertEquals(input.getAttribute("value"), "3");
 
         input.sendKeys(Keys.ARROW_DOWN);
         input.sendKeys(Keys.ARROW_DOWN);
@@ -60,5 +62,6 @@ public class InputsTest {
         Assert.assertEquals(input.getAttribute("value"), "");
 
         driver.quit();
+        softAssert.assertAll();
     }
 }

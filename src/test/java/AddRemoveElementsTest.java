@@ -4,6 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
@@ -30,13 +31,14 @@ public class AddRemoveElementsTest {
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://the-internet.herokuapp.com/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        SoftAssert softAssert = new SoftAssert();
 
         driver.findElement(addRemovePage).click();
         driver.findElement(addButtonLocator).click();
         driver.findElement(addButtonLocator).click();
 
         int size1 = driver.findElements(deleteButtonLocator).size();
-        Assert.assertEquals(size1, 2);
+        softAssert.assertEquals(size1, 2);
 
         driver.findElements(deleteButtonLocator).get(1).click();
 
@@ -44,5 +46,6 @@ public class AddRemoveElementsTest {
         Assert.assertEquals(size2, 1);
 
         driver.quit();
+        softAssert.assertAll();
     }
 }

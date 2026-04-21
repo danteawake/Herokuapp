@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.List;
@@ -30,12 +31,14 @@ public class CheckboxesTest {
         driver.get("https://the-internet.herokuapp.com/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
+        SoftAssert softAssert = new SoftAssert();
+
         driver.findElement(checkboxesPage).click();
         List<WebElement> checkboxes = driver.findElements(checkbox);
         WebElement firstCheckbox = checkboxes.get(0);
         WebElement secondCheckbox = checkboxes.get(1);
 
-        Assert.assertFalse(firstCheckbox.isSelected());
+        softAssert.assertFalse(firstCheckbox.isSelected());
         firstCheckbox.click();
         Assert.assertTrue(firstCheckbox.isSelected());
 
@@ -44,5 +47,6 @@ public class CheckboxesTest {
         Assert.assertFalse(secondCheckbox.isSelected());
 
         driver.quit();
+        softAssert.assertAll();
     }
 }

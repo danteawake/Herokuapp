@@ -4,6 +4,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
@@ -25,14 +26,16 @@ public class TyposTest {
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://the-internet.herokuapp.com/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        SoftAssert softAssert = new SoftAssert();
 
         driver.findElement(typosPage).click();
         for (int i = 0; i < 10; i++) {
             String text = driver.findElements(By.tagName("p")).get(1).getText();
-            Assert.assertEquals(text, "Sometimes you'll see a typo, other times you won't.");
+            softAssert.assertEquals(text, "Sometimes you'll see a typo, other times you won't.");
             driver.navigate().refresh();
         }
 
         driver.quit();
+        softAssert.assertAll();
     }
 }

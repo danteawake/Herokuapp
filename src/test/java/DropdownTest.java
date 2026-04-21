@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.List;
@@ -29,6 +30,7 @@ public class DropdownTest {
         WebDriver driver = new ChromeDriver(options);
         driver.get("https://the-internet.herokuapp.com/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        SoftAssert softAssert = new SoftAssert();
 
         driver.findElement(dropdownPage).click();
         List<WebElement> optionsDropdown = driver.findElements(By.xpath("//select[@id='dropdown']/option[not(@disabled)]"));
@@ -37,7 +39,7 @@ public class DropdownTest {
         WebElement dropdown = driver.findElement(dropdownXpath);
 
         dropdown.click();
-        Assert.assertEquals(optionsDropdown.size(), 2);
+        softAssert.assertEquals(optionsDropdown.size(), 2);
         firstOption.click();
         dropdown.click();
         Assert.assertTrue(firstOption.isSelected());
@@ -47,5 +49,6 @@ public class DropdownTest {
         Assert.assertTrue(secondOption.isSelected());
 
         driver.quit();
+        softAssert.assertAll();
     }
 }
