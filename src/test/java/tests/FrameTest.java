@@ -3,16 +3,17 @@ package tests;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
+import static pages.FramePage.*;
 
 public class FrameTest extends BaseTest {
 
     @Test
     public void checkTextInsideFrame() {
         framePage.open();
-        assertEquals("Frames", framePage.getTitle());
+        assertEquals(TITLE_1_NAME, framePage.getTitle());
         framePage.clickIFrameLink();
-        assertEquals("An iFrame containing the TinyMCE WYSIWYG Editor", framePage.getTitle());
+        assertEquals(TITLE_2_NAME, framePage.getTitle());
         framePage.switchToFrame();
-        assertEquals("Your content goes here.", framePage.getFrameText());
+        assertEquals(FRAME_TEXT, framePage.getFrameText());
     }
 }

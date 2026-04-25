@@ -9,13 +9,15 @@ import java.time.Duration;
 
 public class DynamicControlsPage extends BasePage {
 
+    public static final String TITLE_NAME = "Dynamic Controls";
+    public static final String MESSAGE_ENABLE = "It's enabled!";
+    public static final String MESSAGE_ITS_GONE = "It's gone!";
     private final By TITLE = By.xpath("//h4[text()='Dynamic Controls']");
     private final By REMOVE_BUTTON = By.xpath("//button[text()='Remove']");
     private final By CHECKBOX = By.id("checkbox");
     private final By MESSAGE = By.id("message");
     private final By INPUT = By.cssSelector("#input-example input");
     private final By ENABLE_BUTTON = By.xpath("//button[text()='Enable']");
-
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     public DynamicControlsPage(WebDriver driver) {

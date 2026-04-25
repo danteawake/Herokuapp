@@ -3,14 +3,15 @@ package tests;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
+import static pages.UploadPage.*;
 
 public class UploadTest extends BaseTest {
 
     @Test
     public void uploadFileNameCheck() {
         uploadPage.open();
-        assertEquals("File Uploader", uploadPage.getTitle());
-        uploadPage.uploadFile("C:\\Users\\dante\\OneDrive\\Desktop\\Текстовый документ (4).txt");
-        assertEquals("Текстовый документ (4).txt", uploadPage.getUploadedFileName());
+        assertEquals(TITLE_NAME, uploadPage.getTitle());
+        uploadPage.uploadFile(ABSOLUTE_PATH);
+        assertEquals(FILE_NAME, uploadPage.getUploadedFileName());
     }
 }

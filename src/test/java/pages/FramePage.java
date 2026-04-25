@@ -9,11 +9,13 @@ import java.time.Duration;
 
 public class FramePage extends BasePage {
 
+    public static final String TITLE_1_NAME = "Frames";
+    public static final String TITLE_2_NAME = "An iFrame containing the TinyMCE WYSIWYG Editor";
+    public static final String FRAME_TEXT = "Your content goes here.";
     private final By TITLE = By.cssSelector("h3");
     private final By IFRAME_LINK = By.linkText("iFrame");
     private final By IFRAME_ID = By.id("mce_0_ifr");
     private final By PARAGRAPH = By.tagName("p");
-
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     public FramePage(WebDriver driver) {
