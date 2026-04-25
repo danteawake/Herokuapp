@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 import pages.ContextMenuPage;
 import pages.DynamicControlsPage;
+import pages.UploadPage;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ public class BaseTest {
 
     ContextMenuPage contextMenuPage;
     DynamicControlsPage dynamicControlsPage;
+    UploadPage uploadPage;
 
     @BeforeMethod
     public void setUp() {
@@ -40,6 +42,7 @@ public class BaseTest {
 
         contextMenuPage = new ContextMenuPage(driver);
         dynamicControlsPage = new DynamicControlsPage(driver);
+        uploadPage = new UploadPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
