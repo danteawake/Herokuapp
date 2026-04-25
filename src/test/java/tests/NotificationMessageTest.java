@@ -1,3 +1,5 @@
+package tests;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,33 +14,22 @@ import java.time.Duration;
     нотификации, проверить соответствие текста ожиданиям
      */
 
-public class NotificationMessageTest {
+public class NotificationMessageTest extends BaseTest{
     private final By pageLink = By.xpath("//a[contains(@href, 'notification_message')]");
     private final By clickHere = By.linkText("Click here");
     private final By message = By.id("flash");
 
     @Test
     public void checkNotificationMessage() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized");
-        options.addArguments("--incognito");
-        options.addArguments("--disable-notifications");
-
-        WebDriver driver = new ChromeDriver(options);
         driver.get("https://the-internet.herokuapp.com/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        SoftAssert softAssert = new SoftAssert();
-
         driver.findElement(pageLink).click();
-
         for (int i = 0; i < 10; i++) {
             driver.findElement(clickHere).click();
             String messageText = driver.findElement(message).getText();
             boolean isSuccess = messageText.contains("Action successful");
             softAssert.assertTrue(isSuccess);
         }
-
-        driver.quit();
         softAssert.assertAll();
     }
 }
