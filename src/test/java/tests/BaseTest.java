@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 import pages.ContextMenuPage;
+import pages.DynamicControlsPage;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ public class BaseTest {
     WebDriver driver;
 
     ContextMenuPage contextMenuPage;
+    DynamicControlsPage dynamicControlsPage;
 
     @BeforeMethod
     public void setUp() {
@@ -32,11 +34,12 @@ public class BaseTest {
         options.addArguments("--disable-popup-blocking");
         options.addArguments("--disable-infobars");
         driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         softAssert = new SoftAssert();
         actions = new Actions(driver);
 
         contextMenuPage = new ContextMenuPage(driver);
+        dynamicControlsPage = new DynamicControlsPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
