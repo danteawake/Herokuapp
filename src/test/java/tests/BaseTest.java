@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
+import pages.ContextMenuPage;
 
 import java.util.HashMap;
 
@@ -15,6 +16,8 @@ public class BaseTest {
     protected SoftAssert softAssert;
     protected Actions actions;
     WebDriver driver;
+
+    ContextMenuPage contextMenuPage;
 
     @BeforeMethod
     public void setUp() {
@@ -30,6 +33,8 @@ public class BaseTest {
         driver = new ChromeDriver(options);
         softAssert = new SoftAssert();
         actions = new Actions(driver);
+
+        contextMenuPage = new ContextMenuPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
