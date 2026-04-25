@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 import pages.ContextMenuPage;
 
+import java.time.Duration;
 import java.util.HashMap;
 
 public class BaseTest {
@@ -31,6 +32,7 @@ public class BaseTest {
         options.addArguments("--disable-popup-blocking");
         options.addArguments("--disable-infobars");
         driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         softAssert = new SoftAssert();
         actions = new Actions(driver);
 
